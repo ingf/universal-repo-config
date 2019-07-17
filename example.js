@@ -286,7 +286,7 @@ let foo = () => {
 // arrow function
 
 // Bad:
-var message = 'Hello ' + name + ", it's " + time + ' now'
+var message = 'Hello ' + name + ", it is " + time + ' now'
 
 // Good:
 const message = `Hello ${name}, it's ${time} now`
