@@ -59,6 +59,7 @@ Install editor plugin:
 - https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode
 - https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint
 - https://marketplace.visualstudio.com/items?itemName=shinnn.stylelint
+- https://marketplace.visualstudio.com/items?itemName=octref.vetur
 
 装好插件之后，打开 VS Code，进入 Settings（command + ,），进入 JSON 编辑器模式（点击右上角有一个 {} Open Settings JSON 按钮），添加以下配置：
 
@@ -85,6 +86,16 @@ Install editor plugin:
     },
     "html"
   ],
+  "vetur.format.defaultFormatter.html": "prettier",
+  "vetur.format.defaultFormatter.js": "prettier",
+  "vetur.format.defaultFormatter.less": "prettier",
+  "vetur.format.defaultFormatterOptions": {
+    "prettier": {
+      "semi": false,
+      "singleQuote": true,
+      "trailingComma": "es5"
+    }
+  },
 ```
 
 Enjoy.
