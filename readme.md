@@ -31,7 +31,7 @@ Edit `package.json`, append code below:
 
 ```
   "lint-staged": {
-    "**/**.{js,jsx,ts,json,pcss,vue}": [
+    "**/**.{js,jsx,ts,pcss,vue}": [
       "prettier --write",
       "eslint --fix",
       "git add"
@@ -59,5 +59,32 @@ Install editor plugin:
 - https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode
 - https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint
 - https://marketplace.visualstudio.com/items?itemName=shinnn.stylelint
+
+装好插件之后，打开 VS Code，进入 Settings（command + ,），进入 JSON 编辑器模式（点击右上角有一个 {} Open Settings JSON 按钮），添加以下配置：
+
+```
+  "eslint.alwaysShowStatus": true,
+  "eslint.validate": [
+    "javascript",
+    // jsx
+    "javascriptreact",
+    // vue
+    {
+      "language": "vue",
+      "autoFix": true
+    },
+    // ts
+    {
+      "language": "typescript",
+      "autoFix": true
+    },
+    // tsx
+    {
+      "language": "typescriptreact",
+      "autoFix": true
+    },
+    "html"
+  ],
+```
 
 Enjoy.
