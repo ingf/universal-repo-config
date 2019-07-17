@@ -9,10 +9,6 @@ module.exports = {
     '@vue/prettier',
     '@vue/typescript',
   ],
-  rules: {
-    'no-console': process.env.NODE_ENV === 'production' ? 'error' : 'off',
-    'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off',
-  },
   parserOptions: {
     parser: '@typescript-eslint/parser',
   },
@@ -38,5 +34,10 @@ module.exports = {
     // 一个函数最多有 8 个变量，如果超过了，请拆分之，或者精简之
     'max-statements': [2, 8],
     semi: [2, 'never'],
+
+    'no-console': process.env.NODE_ENV === 'production' ? 'error' : 'off',
+    'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off',
+    'import/no-extraneous-dependencies': 1,
+    'import/no-unresolved': 1,
   },
 }
