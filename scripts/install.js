@@ -1,6 +1,13 @@
 const fs = require('fs')
 const path = require('path')
 
+const packagePath = path.join(process.cwd(), '../../package.json')
+const package = JSON.parse(fs.readFileSync(packagePath, 'utf8'))
+
+if (package.devDependencies['universal-repo-config']) {
+  return
+}
+
 const projectDir = path.join(process.cwd(), '../..')
 const fileList = [
   '.eslintrc.js',
@@ -24,14 +31,16 @@ const appendFile = (src, dist) => {
       })
       .join('\n')
     const currentContent = fs.readFileSync(src, 'utf8')
-    fs.writeFile(dist, content + '\n\n' + currentContent, 'utf8', function(err) {
+    fs.writeFile(dist, content + '\n\n' + currentContent, 'utf8', function(
+      err
+    ) {
       if (err) throw err
-      console.log('The file has been saved!')
+      console.log(dist + ' has been saved!')
     })
   })
 }
 
-fileList.map(fileName=>{
+fileList.map(fileName => {
   const src = path.join(__dirname, '../template/', `${fileName}-tpl`)
   const dist = `${projectDir}/${fileName}`
   appendFile(src, dist)
