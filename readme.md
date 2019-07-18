@@ -3,7 +3,7 @@
 前端项目很多，每个项目都有各自的配置（当前有些可能没有配置），而且配置项繁多：ESLint、Stylelint、Babel、Prettier、editconfig、gitignore、Git hooks & template.
 项目目标为了统一各项目配置，统一团队风格，管理所有工程配置工作。
 
-![prettier](./prettier.gif)
+![prettier](prettier.gif)
 
 ### Installation
 
