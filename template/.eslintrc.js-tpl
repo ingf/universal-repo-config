@@ -15,10 +15,7 @@ module.exports = {
   settings: {
     'import/resolver': {
       alias: {
-        map: [
-          ['~', '.'],
-          ['@', './src/renderer'],
-        ],
+        map: [['~', './src'], ['@', './src']],
         extensions: ['.ts', '.js', '.jsx', '.json', '.vue', '.d.ts'],
       },
     },
@@ -39,7 +36,7 @@ module.exports = {
     // 一个函数最多有 2 层 callback，使用 async/await
     'max-nested-callbacks': [2, 2],
     // 一个文件的最大行数
-    'max-lines': ['error', { max: 500 }],
+    'max-lines': [2, { max: 500 }],
     // 一个函数最多 3 个参数。参数太多的函数，意味着函数功能过于复杂，请拆分
     'max-params': [2, 3],
     // 一个函数最多有 8 个变量，如果超过了，请拆分之，或者精简之
