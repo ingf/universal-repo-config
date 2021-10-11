@@ -1,10 +1,6 @@
 module.exports = {
-  root: true,
-  env: {
-    node: true,
-  },
+  parser: "@typescript-eslint/parser",
   parserOptions: {
-    parser: 'babel-eslint',
     ecmaVersion: 2020,
     ecmaFeatures: {
       jsx: true, // Allows for the parsing of JSX
@@ -12,9 +8,9 @@ module.exports = {
   },
   extends: [
     'airbnb-base',
-    // 'plugin:vue/recommended', // Use this if you are using Vue.js 2.x.
+    // "plugin:vue/recommended", // Use this if you are using Vue.js 2.x.
     'plugin:vue/vue3-recommended', // Use this if you are using Vue.js 3.x.
-    '@vue/prettier',
+    'plugin:@typescript-eslint/eslint-recommended',
     'plugin:prettier/recommended', // https://github.com/prettier/eslint-plugin-prettier#recommended-configuration
   ],
   rules: {
@@ -39,8 +35,5 @@ module.exports = {
     'max-params': [2, 13],
     // 一个函数最多有 8 个变量，如果超过了，请拆分之，或者精简之
     'max-statements': [2, 18],
-
-    'no-console': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
-    'no-debugger': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
   },
 }
