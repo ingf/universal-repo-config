@@ -1,14 +1,14 @@
 const fs = require('fs')
 const path = require('path')
 
-const packagePath = path.join(process.cwd(), '../../package.json')
+const packagePath = path.join(process.cwd(), './package.json')
 const package = JSON.parse(fs.readFileSync(packagePath, 'utf8'))
 
 if (package.devDependencies['universal-repo-config']) {
   return
 }
 
-const projectDir = path.join(process.cwd(), '../..')
+const projectDir = path.join(process.cwd())
 const fileList = [
   '.eslintrc.js',
   '.prettierrc.js',
