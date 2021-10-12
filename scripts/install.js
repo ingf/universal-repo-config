@@ -13,10 +13,15 @@ const inquirer = require("inquirer");
 
 const packagePath = path.join(process.cwd(), "../../package.json");
 const package = JSON.parse(fs.readFileSync(packagePath, "utf8"));
+console.log("install universal-repo-config");
+console.log(
+  `package.devDependencies: ${package.devDependencies["universal-repo-config"]}`
+);
+
 if (package.devDependencies["universal-repo-config"]) {
   return;
 }
-
+console.log('start inquirer')
 let answers = await inquirer.prompt([
   {
     name: "type",
@@ -32,6 +37,7 @@ let answers = await inquirer.prompt([
     ],
   },
 ]);
+console.log('end inquirer')
 if (answers.type[0] == "vue") {
   const suffix = answers.type[1];
   answers = await inquirer.prompt([
