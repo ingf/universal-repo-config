@@ -1,6 +1,6 @@
 {
   "name": "universal-repo-config",
-  "version": "1.0.27-alpha.1",
+  "version": "1.0.27-alpha.2",
   "description": "",
   "scripts": {
     "postinstall": ".scripts/install.js",
