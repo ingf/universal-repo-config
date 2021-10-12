@@ -31,7 +31,7 @@ inquirer
         { name: "React+JavaScript", value: "react-js" },
         { name: "React+TypeScript", value: "react-ts" },
         { name: "Vue+JavaScript", value: ["vue-js"] },
-        { name: "Vue3+JavaScript", value: "vue3-jsjs" },
+        { name: "Vue3+JavaScript", value: "vue3-js" },
         { name: "Vue+TypeScript", value: ["vue-ts"] },
         { name: "Vue3+TypeScript", value: "vue3-ts" },
         { name: "TypeScript", value: "typescript" },
