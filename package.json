@@ -1,8 +1,10 @@
 {
   "name": "universal-repo-config",
-  "version": "1.0.27-alpha.6",
+  "version": "1.0.27-alpha.7",
   "description": "",
-  "bin": "./scripts/install.js",
+  "bin": {
+    "universal-repo-config": "scripts/install.js"
+  },
   "scripts": {
     "postinstall": "node ./scripts/install.js",
     "test": "echo \"Error: no test specified\" && exit 1"
