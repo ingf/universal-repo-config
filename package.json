@@ -3,7 +3,7 @@
   "version": "1.0.27-alpha.13",
   "description": "",
   "bin": {
-    "universal-repo-config": "scripts/install.js"
+    "universal-repo-config": "./scripts/install.js"
   },
   "scripts": {
     "postinstall": "node ./scripts/install.js",
