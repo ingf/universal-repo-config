@@ -2,10 +2,9 @@
   "name": "universal-repo-config",
   "version": "1.0.27-alpha.0",
   "description": "",
-  "bin": {
-    "universal-repo-config": "scripts/install.js"
-  },
+
   "scripts": {
+    "postinstall": "./install.js", 
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
