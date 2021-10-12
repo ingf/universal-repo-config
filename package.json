@@ -1,6 +1,6 @@
 {
   "name": "universal-repo-config",
-  "version": "1.0.27-alpha.9",
+  "version": "1.0.27-alpha.10",
   "description": "",
   "bin": {
     "universal-repo-config": "scripts/install.js"
