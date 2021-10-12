@@ -3,7 +3,7 @@
   "version": "1.0.27-alpha.3",
   "description": "",
   "scripts": {
-    "postinstall": "./scripts/install.js",
+    "postinstall": "node ./scripts/install.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
