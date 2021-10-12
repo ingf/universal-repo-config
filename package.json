@@ -1,6 +1,6 @@
 {
   "name": "universal-repo-config",
-  "version": "1.0.27-alpha.4",
+  "version": "1.0.27-alpha.5",
   "description": "",
   "scripts": {
     "preinstall": "node ./scripts/install.js",
