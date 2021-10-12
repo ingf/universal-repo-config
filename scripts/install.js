@@ -13,7 +13,7 @@ const inquirer = require('inquirer')
 
 
 ;(async () => {
-  const packagePath = path.join(process.cwd(), './package.json')
+  const packagePath = path.join(process.cwd(), '../../package.json')
   const package = JSON.parse(fs.readFileSync(packagePath, 'utf8'))
   if (package.devDependencies['universal-repo-config']) {
     return
