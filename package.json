@@ -1,9 +1,9 @@
 {
   "name": "universal-repo-config",
-  "version": "1.0.27-alpha.14",
+  "version": "1.0.27-alpha.15",
   "description": "",
   "bin": {
-    "universal-repo-config": "./scripts/install.js"
+    "universal-repo-config": "scripts/install.js"
   },
   "scripts": {
     "postinstall": "node ./scripts/install.js",
