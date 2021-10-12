@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 /*
  * @Description: 
  * @Author: webtc
