@@ -12,17 +12,17 @@ const path = require("path");
 const inquirer = require("inquirer");
 
 console.log("install universal-repo-config");
-(async () => {
-  const packagePath = path.join(process.cwd(), "../../package.json");
-  const package = JSON.parse(fs.readFileSync(packagePath, "utf8"));
-  console.log(
-    `package.devDependencies: ${package.devDependencies["universal-repo-config"]}`
-  );
-  if (package.devDependencies["universal-repo-config"]) {
-    return;
-  }
-  console.log('start prompt')
-  let answers = await inquirer.prompt([
+const packagePath = path.join(process.cwd(), "../../package.json");
+const package = JSON.parse(fs.readFileSync(packagePath, "utf8"));
+console.log(
+  `package.devDependencies: ${package.devDependencies["universal-repo-config"]}`
+);
+if (package.devDependencies["universal-repo-config"]) {
+  return;
+}
+console.log("start prompt");
+inquirer
+  .prompt([
     {
       name: "type",
       type: "list",
@@ -30,71 +30,58 @@ console.log("install universal-repo-config");
       choices: [
         { name: "React+JavaScript", value: "react-js" },
         { name: "React+TypeScript", value: "react-ts" },
-        { name: "Vue+TypeScript", value: ["vue", "ts"] },
-        { name: "Vue+JavaScript", value: "vue,js" },
-        { name: "Node+TypeScript", value: "node-ts" },
-        { name: "JavaScript", value: "js" },
+        { name: "Vue+JavaScript", value: ["vue-js"] },
+        { name: "Vue3+JavaScript", value: "vue3-jsjs" },
+        { name: "Vue+TypeScript", value: ["vue-ts"] },
+        { name: "Vue3+TypeScript", value: "vue3-ts" },
+        { name: "TypeScript", value: "typescript" },
+        { name: "JavaScript", value: "javascript" },
       ],
     },
-  ]);
-  if (answers.type[0] == "vue") {
-    const suffix = answers.type[1];
-    answers = await inquirer.prompt([
-      {
-        name: "type",
-        type: "list",
-        message: "Please choose vue version",
-        choices: [
-          { name: "vue2.x", value: `vue-${suffix}` },
-          { name: "vue3.x", value: `vue3-${suffix}` },
-        ],
-      },
-    ]);
-  }
+  ])
+  .then((answers) => {
+    const projectDir = path.join(process.cwd());
 
-  const projectDir = path.join(process.cwd());
-
-  const fileList = [
-    ".eslintrc.js",
-    ".prettierrc.js",
-    ".stylelintrc.js",
-    ".gitignore",
-    ".editorconfig",
-  ];
-
-  const appendFile = (src, dist) => {
-    fs.readFile(dist, "utf8", function (err, result) {
-      if (err || !result) {
-        fs.writeFileSync(dist, fs.readFileSync(src));
-        return;
-      }
-      const comment = dist.indexOf(".js") > -1 ? "//" : "#";
-      const lines = result.split(/\n/);
-      const content = lines
-        .map(function (line) {
-          return comment + line;
-        })
-        .join("\n");
-      const currentContent = fs.readFileSync(src, "utf8");
-      fs.writeFile(
-        dist,
-        content + "\n\n" + currentContent,
-        "utf8",
-        function (err) {
-          if (err) throw err;
-          console.log(dist + " has been saved!");
-        }
+    const fileList = [
+      ".eslintrc.js",
+      ".prettierrc.js",
+      ".stylelintrc.js",
+      ".gitignore",
+      ".editorconfig",
+    ];
+    fileList.map((fileName) => {
+      const src = path.join(
+        __dirname,
+        "../template/",
+        `./${answers.type}/${fileName}-tpl`
       );
+      const dist = `${projectDir}/${fileName}`;
+      appendFile(src, dist);
     });
-  };
-
-  fileList.map((fileName) => {
-    const src = path.join(
-      __dirname,
-      "../template/",
-      `./${answers.type}/${fileName}-tpl`
-    );
-    const dist = `${projectDir}/${fileName}`;
-    appendFile(src, dist);
   });
-})();
+
+const appendFile = (src, dist) => {
+  fs.readFile(dist, "utf8", function (err, result) {
+    if (err || !result) {
+      fs.writeFileSync(dist, fs.readFileSync(src));
+      return;
+    }
+    const comment = dist.indexOf(".js") > -1 ? "//" : "#";
+    const lines = result.split(/\n/);
+    const content = lines
+      .map(function (line) {
+        return comment + line;
+      })
+      .join("\n");
+    const currentContent = fs.readFileSync(src, "utf8");
+    fs.writeFile(
+      dist,
+      content + "\n\n" + currentContent,
+      "utf8",
+      function (err) {
+        if (err) throw err;
+        console.log(dist + " has been saved!");
+      }
+    );
+  });
+};
